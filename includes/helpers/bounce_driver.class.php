@@ -107,7 +107,7 @@ class BounceHandler{
         // parse the email into data structures
         $boundary = isset($this->head_hash['Content-type']['boundary']) ? $this->head_hash['Content-type']['boundary'] : '';
         $mime_sections = $this->parse_body_into_mime_sections($body, $boundary);
-        $this->body_hash = split("\r\n", $body);
+        $this->body_hash = explode("\r\n", $body);
         $this->first_body_hash = isset($mime_sections['first_body_part']) ? $this->parse_head($mime_sections['first_body_part']) : array();
 
         $this->looks_like_a_bounce = $this->is_a_bounce();
