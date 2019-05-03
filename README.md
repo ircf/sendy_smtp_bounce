@@ -27,5 +27,5 @@ add the following line :
 
 `$mail->Sender = $bounceUser; // SMTP bounce : Return-Path = bounce mailbox`
 
-5. Create a cron task on your server like `*/5 * * * * /usr/bin/php /path/to/sendy/bounce.php`
+5. Create a cron task on your server like `*/15 * * * * /usr/bin/php /path/to/sendy/bounce.php`
 6. Enjoy !
