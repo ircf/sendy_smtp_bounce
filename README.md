@@ -22,7 +22,7 @@ to configure your bounce mailbox credentials :
 	$bounceUser = 'bounce@yourdomain';
 	$bouncePass = 'bouncepassword';
 ```
-4. Edit `scheduled.php` around line 587, after line `$mail->Password = $smtp_password;`
+4. Edit `scheduled.php` around line 587, after `$mail->Password = $smtp_password;`
 add the following line :
 
 `$mail->Sender = $bounceUser; // SMTP bounce : Return-Path = bounce mailbox`
