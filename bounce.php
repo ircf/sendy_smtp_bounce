@@ -17,7 +17,7 @@ require_once(dirname(__FILE__)."/includes/helpers/bounce_driver.class.php");
 $bouncehandler = new Bouncehandler();
 
 // connect to mailbox
-$conn = imap_open ($bounce_host, $bounce_user, $bounce_pass) or die(imap_last_error());
+$conn = imap_open ($bounceHost, $bounceUser, $bouncePass) or die(imap_last_error());
 $num_msgs = imap_num_msg($conn);
 
 // get the failures
