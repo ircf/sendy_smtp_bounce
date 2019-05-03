@@ -1,0 +1,139 @@
+diff --git autoresponders.php autoresponders.php
+index 8cee648..22ee160 100644
+--- autoresponders.php
++++ autoresponders.php
+@@ -490,6 +490,7 @@
+ 								$mail->Port = $smtp_port; 
+ 								$mail->Username = $smtp_username;  
+ 								$mail->Password = $smtp_password;
++								if (isset($bounceUser)) $mail->Sender = $bounceUser; // SMTP bounce : Return-Path = bounce mailbox
+ 							}
+ 							$mail->Timezone   = $user_timezone;
+ 							$mail->CharSet	  =	"UTF-8";
+@@ -949,6 +950,7 @@
+ 											$mail->Port = $smtp_port; 
+ 											$mail->Username = $smtp_username;  
+ 											$mail->Password = $smtp_password;
++											if (isset($bounceUser)) $mail->Sender = $bounceUser; // SMTP bounce : Return-Path = bounce mailbox
+ 										}
+ 										$mail->Timezone   = $user_timezone;
+ 										$mail->CharSet	  =	"UTF-8";
+@@ -1413,6 +1415,7 @@
+ 											$mail->Port = $smtp_port; 
+ 											$mail->Username = $smtp_username;  
+ 											$mail->Password = $smtp_password;
++											if (isset($bounceUser)) $mail->Sender = $bounceUser; // SMTP bounce : Return-Path = bounce mailbox
+ 										}
+ 										$mail->Timezone   = $user_timezone;
+ 										$mail->CharSet	  =	"UTF-8";
+diff --git confirm.php confirm.php
+index a07c659..fc45311 100644
+--- confirm.php
++++ confirm.php
+@@ -169,6 +169,7 @@
+ 			$mail->Port = $smtp_port; 
+ 			$mail->Username = $smtp_username;  
+ 			$mail->Password = $smtp_password;
++			if (isset($bounceUser)) $mail->Sender = $bounceUser; // SMTP bounce : Return-Path = bounce mailbox
+ 		}
+ 		$mail->CharSet	  =	"UTF-8";
+ 		$mail->From       = $from_email;
+diff --git includes/config.php includes/config.php
+index 2601d46..c7b56ee 100644
+--- includes/config.php
++++ includes/config.php
+@@ -29,5 +29,10 @@
+ 	/*  Domain of cookie (99.99% chance you don't need to edit this at all)  */
+ 	define('COOKIE_DOMAIN', '');
+ 	
++	/* SMTP bounce settings (use only if you send by SMTP) */
++	//$bounceHost = '{yourdomain:143/novalidate-cert}';
++	//$bounceUser = 'bounce@yourdomain';
++	//$bouncePass = 'bouncepassword';
++	
+ 	//----------------------------------------------------------------------------------//
+ ?>
+diff --git includes/create/send-now.php includes/create/send-now.php
+index 1341e6a..a55152b 100644
+--- includes/create/send-now.php
++++ includes/create/send-now.php
+@@ -555,6 +555,7 @@ if ($r && mysqli_num_rows($r) > 0)
+ 			$mail->Port = $smtp_port; 
+ 			$mail->Username = $smtp_username;  
+ 			$mail->Password = $smtp_password;
++			if (isset($bounceUser)) $mail->Sender = $bounceUser; // SMTP bounce : Return-Path = bounce mailbox
+ 		}
+ 		$mail->CharSet	  =	"UTF-8";
+ 		$mail->From       = $from_email;
+@@ -808,6 +809,7 @@ if($no_of_recipients >= $to_send)
+ 		$mail2->Port = $smtp_port; 
+ 		$mail2->Username = $smtp_username;  
+ 		$mail2->Password = $smtp_password;
++		if (isset($bounceUser)) $mail2->Sender = $bounceUser; // SMTP bounce : Return-Path = bounce mailbox
+ 	}
+ 	$mail2->Timezone   = get_app_info('timezone');
+ 	$mail2->CharSet	  =	"UTF-8";
+diff --git includes/create/test-send.php includes/create/test-send.php
+index 0b3fdf4..bc70b76 100644
+--- includes/create/test-send.php
++++ includes/create/test-send.php
+@@ -154,6 +154,7 @@ for($i=0;$i<count($test_email_array);$i++)
+ 		$mail->Port = $smtp_port; 
+ 		$mail->Username = $smtp_username;  
+ 		$mail->Password = $smtp_password;
++		if (isset($bounceUser)) $mail->Sender = $bounceUser; // SMTP bounce : Return-Path = bounce mailbox
+ 	}
+ 	$mail->Timezone   = get_app_info('timezone');
+ 	$mail->CharSet	  =	"UTF-8";
+diff --git scheduled.php scheduled.php
+index b93647a..afaadfc 100644
+--- scheduled.php
++++ scheduled.php
+@@ -585,6 +585,7 @@
+ 							$mail->Port = $smtp_port; 
+ 							$mail->Username = $smtp_username;  
+ 							$mail->Password = $smtp_password;
++							if (isset($bounceUser)) $mail->Sender = $bounceUser; // SMTP bounce : Return-Path = bounce mailbox
+ 						}
+ 						$mail->Timezone   = $user_timezone;
+ 						$mail->CharSet	  =	"UTF-8";
+@@ -847,6 +848,7 @@
+ 						$mail2->Port = $smtp_port; 
+ 						$mail2->Username = $smtp_username;  
+ 						$mail2->Password = $smtp_password;
++						if (isset($bounceUser)) $mail2->Sender = $bounceUser; // SMTP bounce : Return-Path = bounce mailbox
+ 					}
+ 					$mail2->Timezone   = $user_timezone;
+ 					$mail2->CharSet	  =	"UTF-8";
+diff --git subscribe.php subscribe.php
+index 7de6870..c21a5d2 100644
+--- subscribe.php
++++ subscribe.php
+@@ -651,6 +651,7 @@
+ 					$mail->Port = $smtp_port; 
+ 					$mail->Username = $smtp_username;  
+ 					$mail->Password = $smtp_password;
++					if (isset($bounceUser)) $mail->Sender = $bounceUser; // SMTP bounce : Return-Path = bounce mailbox
+ 				}
+ 				$mail->CharSet	  =	"UTF-8";
+ 				$mail->From       = $from_email;
+@@ -705,6 +706,7 @@
+ 						$mail->Port = $smtp_port; 
+ 						$mail->Username = $smtp_username;  
+ 						$mail->Password = $smtp_password;
++						if (isset($bounceUser)) $mail->Sender = $bounceUser; // SMTP bounce : Return-Path = bounce mailbox
+ 					}
+ 					$mail->CharSet	  =	"UTF-8";
+ 					$mail->From       = $from_email;
+diff --git unsubscribe.php unsubscribe.php
+index 52354e3..ced7019 100644
+--- unsubscribe.php
++++ unsubscribe.php
+@@ -333,6 +333,7 @@
+ 				$mail->Port = $smtp_port; 
+ 				$mail->Username = $smtp_username;  
+ 				$mail->Password = $smtp_password;
++				if (isset($bounceUser)) $mail->Sender = $bounceUser; // SMTP bounce : Return-Path = bounce mailbox
+ 			}
+ 			$mail->CharSet	  =	"UTF-8";
+ 			$mail->From       = $from_email;
