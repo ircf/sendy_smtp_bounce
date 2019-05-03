@@ -15,6 +15,18 @@ This program collects all bounce messages from a given mailbox and updates subsc
 1. Create a `bounce@yourdomain` mailbox to collect bounce messages
 2. Configure Sendy's MAIL FROM with `bounce@yourdomain`
 3. Copy/merge `bounce.php` and `includes` into /path/to/sendy/
-4. Edit `bounce.php` and configure the bounce mailbox credentials : `$bounce_host`, `$bounce_user` and `$bounce_pass`
+4. Add the following lines to `includes/config.php` in the optional settings section
+to configure your bounce mailbox credentials :
+```
+	/* SMTP bounce settings (use only if you send by SMTP) */
+	$bounceHost = '{mybouncemailserver.com:143/novalidate-cert}';
+	$bounceUser = 'mybouncemailbox@mybouncemailserver.com';
+	$bouncePass = 'mybouncepassword';
+```
+5. Edit `scheduled.php` around line 587, after line `$mail->Password = $smtp_password;`
+add the following line :
+
+`$mail->Sender = $bounceUser; // SMTP bounce : Return-Path = bounce mailbox`
+
 5. Create a cron task on your server like `*/5 * * * * /usr/bin/php /path/to/sendy/bounce.php`
 6. Enjoy !

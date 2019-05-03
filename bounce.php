@@ -5,11 +5,6 @@
  * @see http://cheesefather.com/2011/12/process-email-bounces-with-php/
  */
 
-// bounce config
-$bounce_host = '';
-$bounce_user = '';
-$bounce_pass = '';
-
 // load sendy config and connect to db
 require_once('includes/config.php');
 if(isset($dbPort)) $mysqli = new mysqli($dbHost, $dbUser, $dbPass, $dbName, $dbPort);
