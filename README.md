@@ -18,9 +18,9 @@ This program collects all bounce messages from a given mailbox and updates subsc
 to configure your bounce mailbox credentials :
 ```
 	/* SMTP bounce settings (use only if you send by SMTP) */
-	$bounceHost = '{mybouncemailserver.com:143/novalidate-cert}';
-	$bounceUser = 'mybouncemailbox@mybouncemailserver.com';
-	$bouncePass = 'mybouncepassword';
+	$bounceHost = '{yourdomain:143/novalidate-cert}';
+	$bounceUser = 'bounce@yourdomain';
+	$bouncePass = 'bouncepassword';
 ```
 4. Edit `scheduled.php` around line 587, after line `$mail->Password = $smtp_password;`
 add the following line :
