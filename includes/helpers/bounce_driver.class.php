@@ -455,7 +455,11 @@ class BounceHandler{
                         $line = substr($line, 0, -1);
                     else
                         $line .= "\r\n";
-                    $decoded .= preg_replace("/=([0-9A-F][0-9A-F])/e", 'chr(hexdec("$1"))', $line);
+                    // Modified by IRCF : PHP 7 compat
+                    //$decoded .= preg_replace("/=([0-9A-F][0-9A-F])/e", 'chr(hexdec("$1"))', $line);
+                    $decoded .= preg_replace_callback('/=([0-9A-F][0-9A-F])/', function ($ms) {
+                      return '='.chr(hexdec($ms[0]));
+                    }, $line);
                 }
                 case 'base64': {
                     $decoded .= base64_decode($line);

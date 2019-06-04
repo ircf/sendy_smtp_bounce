@@ -66,7 +66,7 @@ for ($n=1;$n<=$num_msgs;$n++) {
         }
       }
     }
-    imap_delete($conn, $$n);
+    imap_delete($conn, $n);
   } //if delivery failed
 }
 
