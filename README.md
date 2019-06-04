@@ -1,7 +1,5 @@
 # sendy_smtp_bounce
 
-**WARNING : Work in progress ! Do NOT use in production**
-
 Bounce program for Sendy SMTP method.
 Written for https://sendy.co/ version 4.0
 
