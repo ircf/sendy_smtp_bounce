@@ -1,7 +1,21 @@
-diff --git autoresponders.php autoresponders.php
+From c1f7891ea42b23756eb1cff281ae2ba367b2e16a Mon Sep 17 00:00:00 2001
+From: Mathieu Bautista <mbautista@ircf.fr>
+Date: Fri, 3 May 2019 10:23:07 +0200
+Subject: [PATCH] added bounce patch
+
+---
+ autoresponders.php                | 5 ++++-
+ includes/config.php               | 7 ++++++-
+ includes/create/send-now.php      | 2 ++
+ includes/create/test-send.php     | 3 ++-
+ includes/helpers/subscription.php | 3 ++-
+ scheduled.php                     | 4 +++-
+ 6 files changed, 19 insertions(+), 5 deletions(-)
+
+diff --git a/autoresponders.php b/autoresponders.php
 index f608336..9afd703 100644
---- autoresponders.php
-+++ autoresponders.php
+--- a/autoresponders.php
++++ b/autoresponders.php
 @@ -502,6 +502,7 @@
  								$mail->Port = $smtp_port; 
  								$mail->Username = $smtp_username;  
@@ -26,10 +40,17 @@ index f608336..9afd703 100644
  										}
  										$mail->Timezone   = $user_timezone;
  										$mail->CharSet	  =	"UTF-8";
-diff --git includes/config.php includes/config.php
+@@ -1493,4 +1496,4 @@
+ 			}
+ 	    }  
+ 	}
+-?>
+\ No newline at end of file
++?>
+diff --git a/includes/config.php b/includes/config.php
 index 59f3c92..9089b9d 100644
---- includes/config.php
-+++ includes/config.php
+--- a/includes/config.php
++++ b/includes/config.php
 @@ -29,5 +29,10 @@
  	/*  Domain of cookie (99.99% chance you don't need to edit this at all)  */
  	define('COOKIE_DOMAIN', '');
@@ -40,10 +61,13 @@ index 59f3c92..9089b9d 100644
 +	//$bouncePass = 'bouncepassword';
 +	
  	//----------------------------------------------------------------------------------//
-diff --git includes/create/send-now.php includes/create/send-now.php
+-?>
+\ No newline at end of file
++?>
+diff --git a/includes/create/send-now.php b/includes/create/send-now.php
 index e4b0665..9708d34 100644
---- includes/create/send-now.php
-+++ includes/create/send-now.php
+--- a/includes/create/send-now.php
++++ b/includes/create/send-now.php
 @@ -555,6 +555,7 @@ if ($r && mysqli_num_rows($r) > 0)
  			$mail->Port = $smtp_port; 
  			$mail->Username = $smtp_username;  
@@ -60,10 +84,10 @@ index e4b0665..9708d34 100644
  	}
  	$mail2->Timezone   = get_app_info('timezone');
  	$mail2->CharSet	  =	"UTF-8";
-diff --git includes/create/test-send.php includes/create/test-send.php
+diff --git a/includes/create/test-send.php b/includes/create/test-send.php
 index cc028ad..4e46c25 100644
---- includes/create/test-send.php
-+++ includes/create/test-send.php
+--- a/includes/create/test-send.php
++++ b/includes/create/test-send.php
 @@ -174,6 +174,7 @@ for($i=0;$i<count($test_email_array);$i++)
  		$mail->Port = $smtp_port; 
  		$mail->Username = $smtp_username;  
@@ -75,10 +99,14 @@ index cc028ad..4e46c25 100644
 @@ -222,4 +223,4 @@ for($i=0;$i<count($test_email_array);$i++)
  	mysqli_query($mysqli, 'UPDATE apps SET test_email = "'.$test_email.'" WHERE id = '.$app);
  }
-diff --git includes/helpers/subscription.php includes/helpers/subscription.php
+ 
+-?>
+\ No newline at end of file
++?>
+diff --git a/includes/helpers/subscription.php b/includes/helpers/subscription.php
 index ce89db1..7a75995 100644
---- includes/helpers/subscription.php
-+++ includes/helpers/subscription.php
+--- a/includes/helpers/subscription.php
++++ b/includes/helpers/subscription.php
 @@ -33,6 +33,7 @@
  			$mail->Port = $smtp_port; 
  			$mail->Username = $smtp_username;  
@@ -91,10 +119,13 @@ index ce89db1..7a75995 100644
  	    $country_code = array('AF','AX','AL','DZ','AS','AD','AO','AI','AQ','AG','AR','AM','AW','AU','AT','AZ','BS','BH','BD','BB','BY','BE','BZ','BJ','BM','BT','BO','BA','BW','BV','BR','IO','VG','BN','BG','BF','BI','KH','CM','CA','CV','KY','CF','TD','CL','CN','CX','CC','CO','KM','CD','CG','CK','CR','CI','HR','CU','CY','CZ','DK','DJ','DM','DO','EC','EG','SV','GQ','ER','EE','ET','FO','FK','FJ','FI','FR','GF','PF','TF','GA','GM','GE','DE','GH','GI','GR','GL','GD','GP','GU','GT','GG','GN','GW','GY','HT','HM','VA','HN','HK','HU','IS','IN','ID','IR','IQ','IE','IM','IL','IT','JM','JP','JE','JO','KZ','KE','KI','KP','KR','KW','KG','LA','LV','LB','LS','LR','LY','LI','LT','LU','MO','MK','MG','MW','MY','MV','ML','MT','MH','MQ','MR','MU','YT','MX','FM','MD','MC','MN','ME','MS','MA','MZ','MM','NA','NR','NP','AN','NL','NC','NZ','NI','NE','NG','NU','NF','MP','NO','OM','PK','PW','PS','PA','PG','PY','PE','PH','PN','PL','PT','PR','QA','RE','RO','RU','RW','BL','SH','KN','LC','MF','PM','VC','WS','SM','ST','SA','SN','RS','SC','SL','SG','SK','SI','SB','SO','ZA','GS','ES','LK','SD','SR','SJ','SZ','SE','CH','SY','TW','TJ','TZ','TH','TL','TG','TK','TO','TT','TN','TR','TM','TC','TV','UG','UA','AE','GB','US','UM','VI','UY','UZ','VU','VE','VN','WF','EH','YE','ZM','ZW','EU','IC','SX','CW','XK');
  	    return in_array($code, $country_code) ? false : true;
  	}
-diff --git scheduled.php scheduled.php
+-?>
+\ No newline at end of file
++?>
+diff --git a/scheduled.php b/scheduled.php
 index 091fdf7..6265df6 100644
---- scheduled.php
-+++ scheduled.php
+--- a/scheduled.php
++++ b/scheduled.php
 @@ -597,6 +597,7 @@
  							$mail->Port = $smtp_port; 
  							$mail->Username = $smtp_username;  
@@ -111,3 +142,13 @@ index 091fdf7..6265df6 100644
  					}
  					$mail2->Timezone   = $user_timezone;
  					$mail2->CharSet	  =	"UTF-8";
+@@ -917,4 +919,4 @@
+ 			}
+ 	    }  
+ 	}
+-?>
+\ No newline at end of file
++?>
+-- 
+2.7.4
+
