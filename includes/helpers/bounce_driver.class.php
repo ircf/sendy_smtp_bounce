@@ -427,7 +427,7 @@ class BounceHandler{
         $hash = $this->standard_parser($headers);
         if(isset($hash['Content-type'])) {//preg_match('/Multipart\/Report/i', $hash['Content-type'])){
             $multipart_report = explode (';', $hash['Content-type']);
-            $hash['Content-type']='';
+            $hash['Content-type'] = array();
             $hash['Content-type']['type'] = strtolower($multipart_report[0]);
             foreach($multipart_report as $mr){
                 if(preg_match('/([^=.]*?)=(.*)/i', $mr, $matches)){
