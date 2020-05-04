@@ -635,7 +635,7 @@ class BounceHandler{
 
     // Take a line like "4.2.12 This is an error" and return  "4.2.12" and "This is an error"
     function format_status_code($code) {
-        $ret = "";
+        $ret = array();
         if(preg_match('/([245]\.[01234567]\.\d{1,2})\s*(.*)/', $code, $matches)) {
             $ret['code'] = $matches[1];
             $ret['text'] = $matches[2];
