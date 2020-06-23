@@ -418,7 +418,7 @@ class BounceHandler{
     function is_RFC1892_multipart_report(){
         return @$this->head_hash['Content-type']['type']=='multipart/report'
            &&  @$this->head_hash['Content-type']['report-type']=='delivery-status'
-           &&  @$this->head_hash['Content-type'][boundary]!=='';
+           &&  @$this->head_hash['Content-type']['boundary']!=='';
     }
 
     function parse_head($headers){
