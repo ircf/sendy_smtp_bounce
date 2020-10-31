@@ -226,7 +226,7 @@ class BounceHandler{
             //  Busted Exim MTA
             //  Up to 50 email addresses can be listed on each header.
             //  There can be multiple X-Failed-Recipients: headers. - (not supported)
-            $arrFailed = split(',', $this->head_hash['X-failed-recipients']);
+            $arrFailed = explode(',', $this->head_hash['X-failed-recipients']);
             for($j=0; $j<count($arrFailed); $j++){
                 $this->output[$j]['recipient'] = trim($arrFailed[$j]);
                 $this->output[$j]['status'] = $this->get_status_code_from_text($this->output[$j]['recipient'],0);
