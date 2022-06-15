@@ -1,5 +1,8 @@
 # sendy_smtp_bounce
 
+# This feature has been included to Sendy 6.0 so this project is not maintained anymore.
+# More info : https://sendy.co/get-updated
+
 Bounce program for Sendy SMTP method.
 Written for https://sendy.co/ version 4.0
 
