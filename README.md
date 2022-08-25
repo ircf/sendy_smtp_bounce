@@ -1,6 +1,6 @@
-# sendy_smtp_bounce
+## sendy_smtp_bounce
 
-#Update 8-25-2022 Uploaded new updated for send version 5.2.6 and 6.0.2
+## Update 8-25-2022 Uploaded new updated for send version 5.2.6 and 6.0.2
 Instructions are the same for both versions.
 
 Sendy Bounce SMTP for each brand.
@@ -20,6 +20,7 @@ ADD COLUMN bounce_password VARCHAR(100)NOT NULL AFTER bounce_username;
 
 Create cron to run every 15 minutes
 usr/bin/php /path/to/sendy/bounce.php > /dev/null 2>&1
+
 =====================================================================================================
 
 
