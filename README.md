@@ -7,6 +7,9 @@ Instructions are the same for both versions.
 
 Sendy Bounce SMTP for each brand.
 
+
+![sendysmtp](https://user-images.githubusercontent.com/78339481/106421864-1e4e1a00-6423-11eb-9bbb-66bb23a973cb.png)
+
 1. You will have to go into your mysql database and run the mysql code below.
 It will create the columns needed for the bounce to work.
 
