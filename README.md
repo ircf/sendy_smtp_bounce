@@ -3,6 +3,8 @@
 ## Update 8-25-2022 Uploaded new updated for Sendy version 5.2.6 and 6.0.2
 I am testing and seems to work if you run into any issues I will do my best to help.
 
+## Needs to run in PHP 7.3.  PHP 7.4 is giving errors
+
 Instructions are the same for both versions.
 
 Sendy Bounce SMTP for each brand.
