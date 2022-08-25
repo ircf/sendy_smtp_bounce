@@ -10,13 +10,13 @@ Sendy Bounce SMTP for each brand.
 
 ![sendysmtp](https://user-images.githubusercontent.com/78339481/106421864-1e4e1a00-6423-11eb-9bbb-66bb23a973cb.png)
 
-1. You will have to go into your mysql database and run the mysql code below.
+1. You will have to go into your mysql database table apps and run the mysql code below.
 It will create the columns needed for the bounce to work.
 
-ALTER TABLE apps
-ADD COLUMN bounce_host VARCHAR(100) NOT NULL AFTER smtp_password,
-ADD COLUMN bounce_port VARCHAR(100) NOT NULL AFTER bounce_host,
-ADD COLUMN bounce_username VARCHAR(100) NOT NULL AFTER bounce_port,
+ALTER TABLE apps<BR>
+ADD COLUMN bounce_host VARCHAR(100) NOT NULL AFTER smtp_password,<Br>
+ADD COLUMN bounce_port VARCHAR(100) NOT NULL AFTER bounce_host,<BR>
+ADD COLUMN bounce_username VARCHAR(100) NOT NULL AFTER bounce_port,<br>
 ADD COLUMN bounce_password VARCHAR(100)NOT NULL AFTER bounce_username;
 
 2. Upload all the files included and overwrite the old files. 
